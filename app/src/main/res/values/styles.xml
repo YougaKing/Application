@@ -54,9 +54,12 @@
         <!--设置不覆盖锚点-->
         <item name="overlapAnchor">false</item>
         <!-- 弹出层垂直方向上的偏移，即在竖直方向上距离Toolbar的距离，值为负则会盖住Toolbar -->
-        <item name="android:dropDownVerticalOffset">2dp</item>
+        <item name="android:dropDownVerticalOffset">0dp</item>
         <!-- 弹出层水平方向上的偏移，即距离屏幕左边的距离，负值会导致右边出现空隙 -->
-        <item name="android:dropDownHorizontalOffset">0dp</item>
+        <item name="android:dropDownHorizontalOffset">-10dp</item>
+        <item name="android:dropDownWidth">50dp</item>
+        <item name="android:animationDuration">600</item>
+        <!--<item name="android:shadowColor">@android:color/darker_gray</item>-->
     </style>
 
     <style name="ActionMenuTextAppearance" parent="@style/TextAppearance.AppCompat.Menu">
@@ -65,10 +68,14 @@
 
     <style name="ActionButtonStyle" parent="Widget.AppCompat.Light.ActionButton">
         <item name="android:minWidth">@dimen/icon_default_width</item>
+        <item name="android:width">@dimen/icon_default_width</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:scaleType">centerInside</item>
     </style>
 
     <style name="ToolbarNavigationButtonStyle" parent="@style/Widget.AppCompat.Toolbar.Button.Navigation">
         <item name="android:minWidth">@dimen/icon_default_width</item>
+        <item name="android:width">@dimen/icon_default_width</item>
         <item name="android:padding">0dp</item>
         <item name="android:scaleType">centerInside</item>
     </style>
