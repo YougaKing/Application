@@ -23,9 +23,8 @@
         <item name="actionMenuTextColor">@color/colorAccent</item>
         <!--menu字体大小-->
         <item name="actionMenuTextAppearance">@style/ActionMenuTextAppearance</item>
-        <!--menu折叠图标颜色 两个属性都起作用-->
-        <item name="colorControlNormal">@color/colorAccent</item>
-        <item name="android:textColorSecondary">@color/colorAccent</item>
+        <!--修改菜单栏右边三个白点图标-->
+        <item name="android:actionOverflowButtonStyle">@style/ActionOverflowButtonStyle</item>
         <!--menu 按钮间距-->
         <item name="actionButtonStyle">@style/ActionButtonStyle</item>
         <!--navigationIcon间距-->
@@ -57,9 +56,16 @@
         <item name="android:dropDownVerticalOffset">0dp</item>
         <!-- 弹出层水平方向上的偏移，即距离屏幕左边的距离，负值会导致右边出现空隙 -->
         <item name="android:dropDownHorizontalOffset">-10dp</item>
-        <item name="android:dropDownWidth">50dp</item>
-        <item name="android:animationDuration">600</item>
         <!--<item name="android:shadowColor">@android:color/darker_gray</item>-->
+    </style>
+
+    <!--修改菜单栏右边三个白点图标-->
+    <style name="ActionOverflowButtonStyle" parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
+        <item name="android:src">@drawable/icon_menu_more_black</item>
+        <item name="android:minWidth">@dimen/icon_default_width</item>
+        <item name="android:width">@dimen/icon_default_width</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:scaleType">centerInside</item>
     </style>
 
     <style name="ActionMenuTextAppearance" parent="@style/TextAppearance.AppCompat.Menu">

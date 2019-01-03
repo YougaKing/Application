@@ -40,6 +40,12 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <View
+        android:layout_width="0.5dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:layout_marginRight="10dp"
+        android:background="@color/colorAccent" />
 
     <View
         android:layout_width="0.5dp"
