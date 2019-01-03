@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="actionBarSize">48dp</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -15,14 +16,68 @@
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <!-- ToolBar菜单样式.-->
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <!-- ToolBar样式.-->
+    <style name="AppTheme.Toolbar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!--menu字体颜色-->
+        <item name="actionMenuTextColor">@color/colorAccent</item>
+        <!--menu字体大小-->
+        <item name="actionMenuTextAppearance">@style/ActionMenuTextAppearance</item>
+        <!--menu折叠图标颜色 两个属性都起作用-->
+        <item name="colorControlNormal">@color/colorAccent</item>
+        <item name="android:textColorSecondary">@color/colorAccent</item>
+        <!--menu 按钮间距-->
+        <item name="actionButtonStyle">@style/ActionButtonStyle</item>
+        <!--navigationIcon间距-->
+        <item name="toolbarNavigationButtonStyle">@style/ToolbarNavigationButtonStyle</item>
+    </style>
 
-    <style name="popup_theme" parent="@style/ThemeOverlay.AppCompat.Light">
-        <!--设置背景-->
-        <item name="android:background">@android:color/white</item>
-        <!--设置字体颜色-->
+    <!-- ToolBar 弹出menu样式.-->
+    <style name="Toolbar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <!--menu窗口背景-->
+        <item name="android:background">@color/cn_white_base_color</item>
+        <!--menu字体颜色-->
+        <item name="android:textColor">@color/colorAccent</item>
+        <!--menu字体大小-->
+        <item name="android:textSize">12sp</item>
+        <!--menu窗口位置-->
+        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
+    </style>
+
+    <!-- Toolbar 标题样式 -->
+    <style name="Toolbar.titleTextAppearance" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/colorAccent</item>
     </style>
+
+    <style name="OverflowMenuStyle" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
+        <!--设置不覆盖锚点-->
+        <item name="overlapAnchor">false</item>
+        <!-- 弹出层垂直方向上的偏移，即在竖直方向上距离Toolbar的距离，值为负则会盖住Toolbar -->
+        <item name="android:dropDownVerticalOffset">2dp</item>
+        <!-- 弹出层水平方向上的偏移，即距离屏幕左边的距离，负值会导致右边出现空隙 -->
+        <item name="android:dropDownHorizontalOffset">0dp</item>
+    </style>
+
+    <style name="ActionMenuTextAppearance" parent="@style/TextAppearance.AppCompat.Menu">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="ActionButtonStyle" parent="Widget.AppCompat.Light.ActionButton">
+        <item name="android:minWidth">@dimen/icon_default_width</item>
+    </style>
+
+    <style name="ToolbarNavigationButtonStyle" parent="@style/Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="android:minWidth">@dimen/icon_default_width</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:scaleType">centerInside</item>
+    </style>
+
+    <style name="ToolbarStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="android:theme">@style/AppTheme.Toolbar</item>
+    </style>
+
 </resources>

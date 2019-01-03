@@ -9,17 +9,37 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:elevation="0dp"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:elevation="0dp">
 
         <youga.com.application.Toolbar
             android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/ToolbarStyle"
             app:navigationIcon="@drawable/icon_menu_back_black"
-            app:title="哈哈哈" />
+            app:title="呵呵" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_10"
+            android:background="@color/colorAccent" />
+
+        <youga.com.application.Toolbar
+            style="@style/ToolbarStyle"
+            app:subtitle="哈哈" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_10"
+            android:background="@color/colorAccent" />
+
+        <youga.com.application.Toolbar style="@style/ToolbarStyle">
+
+            <include layout="@layout/toolbar" />
+
+        </youga.com.application.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
+
 
     <include layout="@layout/content_basic" />
 

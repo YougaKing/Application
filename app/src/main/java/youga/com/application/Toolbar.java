@@ -1,17 +1,14 @@
 package youga.com.application;
 
 import android.content.Context;
-import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.AppCompatTextView;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.LayoutInflater;
+import android.view.Gravity;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.ViewGroup;
 
 /**
  * @author: YougaKingWu@gmail.com
@@ -20,10 +17,9 @@ import android.widget.TextView;
  */
 public class Toolbar extends android.support.v7.widget.Toolbar {
 
-    private static final String TAG = "Toolbar";
-    private ImageView mIvBack;
-    private TextView mTvTitle;
-    private TextView mTvMiddleTitle;
+
+    private CharSequence mMiddleTitleText;
+    private AppCompatTextView mTitleTextView;
 
     public Toolbar(@NonNull Context context) {
         this(context, null);
@@ -37,62 +33,36 @@ public class Toolbar extends android.support.v7.widget.Toolbar {
         super(context, attrs, defStyleAttr);
         setContentInsetsAbsolute(0, 0);
         setContentInsetsRelative(0, 0);
-
-        View view = LayoutInflater.from(context).inflate(R.layout.toolbar, this, false);
-        mIvBack = view.findViewById(R.id.iv_back);
-        mTvTitle = view.findViewById(R.id.tv_title);
-        mTvMiddleTitle = view.findViewById(R.id.tv_middle_title);
-        addView(view);
-
-
-        TypedArray a = context.obtainStyledAttributes(attrs, android.support.v7.appcompat.R.styleable.Toolbar, defStyleAttr, 0);
-        Drawable navIcon = a.getDrawable(android.support.v7.appcompat.R.styleable.Toolbar_navigationIcon);
-        if (navIcon != null) {
-            setNavigationIcon(navIcon);
-        }
-        CharSequence title = a.getText(android.support.v7.appcompat.R.styleable.Toolbar_title);
-        Log.d(TAG, "title:" + title);
-        if (!TextUtils.isEmpty(title)) {
-            setTitle(title);
-        }
-        a.recycle();
+        setPopupTheme(R.style.Toolbar_PopupOverlay);
+        // 返回按钮和标题间距
+        setContentInsetStartWithNavigation(0);
+        // 标题字体大小
+        setTitleTextAppearance(context, R.style.Toolbar_titleTextAppearance);
     }
 
     @Override
-    public void setNavigationIcon(int resId) {
-        if (mIvBack == null) {
-            return;
-        }
-        mIvBack.setVisibility(VISIBLE);
-        mIvBack.setImageResource(resId);
+    public void setSubtitle(int resId) {
+        setSubtitle(getContext().getText(resId));
     }
 
     @Override
-    public void setNavigationIcon(@Nullable Drawable icon) {
-        if (mIvBack == null) {
-            return;
+    public void setSubtitle(CharSequence subtitle) {
+        if (!TextUtils.isEmpty(subtitle)) {
+            if (mMiddleTitleText == null) {
+                Context context = this.getContext();
+                mTitleTextView = new AppCompatTextView(context);
+                mTitleTextView.setSingleLine();
+                mTitleTextView.setEllipsize(TextUtils.TruncateAt.END);
+                mTitleTextView.setTextAppearance(context, R.style.Toolbar_titleTextAppearance);
+                Toolbar.LayoutParams params = new Toolbar.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                params.gravity = Gravity.CENTER;
+                addView(mTitleTextView, params);
+            }
         }
-        mIvBack.setVisibility(VISIBLE);
-        mIvBack.setImageDrawable(icon);
-    }
 
-    @Override
-    public void setTitle(int resId) {
-        if (mTvTitle == null) {
-            return;
+        if (this.mTitleTextView != null) {
+            this.mTitleTextView.setText(subtitle);
         }
-        mTvTitle.setVisibility(VISIBLE);
-        mTvTitle.setText(resId);
+        mMiddleTitleText = subtitle;
     }
-
-    @Override
-    public void setTitle(CharSequence title) {
-        if (mTvTitle == null) {
-            return;
-        }
-        Log.d(TAG, "setTitle:" + title);
-        mTvTitle.setVisibility(VISIBLE);
-        mTvTitle.setText(title);
-    }
-
 }

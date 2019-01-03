@@ -2,10 +2,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize"
-    android:layout_alignParentTop="true"
-    android:background="@color/cn_white_base_color"
-    android:minHeight="?attr/actionBarSize">
+    android:layout_height="match_parent"
+    android:background="@color/cn_white_base_color">
 
     <ImageView
         android:id="@+id/iv_back"
@@ -14,9 +12,7 @@
         android:layout_gravity="center_vertical|left"
         android:scaleType="centerInside"
         android:src="@drawable/icon_menu_back_black"
-        android:visibility="gone"
-        tools:ignore="ContentDescription"
-        tools:visibility="visible" />
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/tv_title"
@@ -28,12 +24,10 @@
         android:gravity="center"
         android:maxEms="20"
         android:singleLine="true"
+        android:text="@string/app_name"
         android:textColor="@color/cn_textview_theme_color"
         android:textSize="@dimen/dp_16"
-        android:textStyle="bold"
-        android:visibility="gone"
-        tools:text="@string/app_name"
-        tools:visibility="visible" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tv_middle_title"
@@ -44,11 +38,14 @@
         android:gravity="center"
         android:maxEms="15"
         android:singleLine="true"
+        android:text="@string/app_name"
         android:textColor="@color/cn_textview_theme_color"
         android:textSize="@dimen/dp_16"
-        android:textStyle="bold"
-        android:visibility="gone"
-        tools:text="@string/app_name"
-        tools:visibility="visible" />
+        android:textStyle="bold" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center_vertical"
+        android:src="@mipmap/ic_launcher" />
 </FrameLayout>

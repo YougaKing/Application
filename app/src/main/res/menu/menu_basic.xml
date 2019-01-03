@@ -7,4 +7,23 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="always" />
+    <item
+        android:icon="@drawable/icon_menu_back_black"
+        android:orderInCategory="100"
+        android:title=""
+        app:showAsAction="always" />
+    <item
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+
+    <item
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+    <item
+        android:icon="@drawable/icon_menu_back_black"
+        android:orderInCategory="100"
+        android:title=""
+        app:showAsAction="never" />
 </menu>
