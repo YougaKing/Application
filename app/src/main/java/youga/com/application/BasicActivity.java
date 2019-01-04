@@ -8,6 +8,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import youga.com.application.Toolbar.OnPopupMenuItemClickListener;
 
 public class BasicActivity extends AppCompatActivity {
 
@@ -59,7 +62,12 @@ public class BasicActivity extends AppCompatActivity {
                     "删除计划课程",
                     "退出计划",
             };
-            mToolbar.showPopupMenu(strings);
+            mToolbar.showPopupMenu(strings, new OnPopupMenuItemClickListener() {
+                @Override
+                public void onItemClick(String menu, int position) {
+                    Toast.makeText(getApplicationContext(), menu, Toast.LENGTH_SHORT).show();
+                }
+            });
             return true;
         }
 

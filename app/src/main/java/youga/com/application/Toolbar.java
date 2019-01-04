@@ -66,10 +66,18 @@ public class Toolbar extends android.support.v7.widget.Toolbar {
     }
 
     public void showPopupMenu(String[] menus) {
+        showPopupMenu(menus, null);
+    }
+
+    public void showPopupMenu(String[] menus, OnPopupMenuItemClickListener menuItemClickListener) {
         if (menus == null) {
             return;
         }
-        PopupMenuWindow popupWindow = new PopupMenuWindow(getContext(), menus);
+        PopupMenuWindow popupWindow = new PopupMenuWindow(getContext(), menus, menuItemClickListener);
         popupWindow.show(this, getHeight() - 20);
+    }
+
+    public interface OnPopupMenuItemClickListener {
+        void onItemClick(String menu, int position);
     }
 }

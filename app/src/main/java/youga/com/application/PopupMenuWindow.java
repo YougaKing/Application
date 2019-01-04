@@ -14,6 +14,8 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import youga.com.application.Toolbar.OnPopupMenuItemClickListener;
+
 import static android.widget.ListPopupWindow.MATCH_PARENT;
 
 /**
@@ -25,9 +27,11 @@ public class PopupMenuWindow extends PopupWindow {
 
     private View mSpaceView;
     private RecyclerView mRecyclerView;
+    private OnPopupMenuItemClickListener mMenuItemClickListener;
 
-    public PopupMenuWindow(Context context, String[] menus) {
+    public PopupMenuWindow(Context context, String[] menus, OnPopupMenuItemClickListener menuItemClickListener) {
 
+        mMenuItemClickListener = menuItemClickListener;
         setWidth(MATCH_PARENT);
         setHeight(MATCH_PARENT);
         setOutsideTouchable(true);
@@ -95,6 +99,9 @@ public class PopupMenuWindow extends PopupWindow {
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        if (mMenuItemClickListener != null) {
+                            mMenuItemClickListener.onItemClick(mStrings[position], position);
+                        }
                         dismiss();
                     }
                 });
