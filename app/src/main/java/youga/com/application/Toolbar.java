@@ -17,8 +17,9 @@ import android.view.ViewGroup;
 public class Toolbar extends android.support.v7.widget.Toolbar {
 
 
-    private CharSequence mMiddleTitleText;
+    private CharSequence mTitleText;
     private AppCompatTextView mTitleTextView;
+    private int mTitleTextColor;
 
     public Toolbar(@NonNull Context context) {
         this(context, null);
@@ -36,7 +37,7 @@ public class Toolbar extends android.support.v7.widget.Toolbar {
         // 返回按钮和标题间距
         setContentInsetStartWithNavigation(0);
         // 标题字体大小
-        setTitleTextAppearance(context, R.style.Toolbar_titleTextAppearance);
+        setTitleTextAppearance(context, R.style.Toolbar_TitleTextAppearance);
     }
 
     @Override
@@ -47,12 +48,15 @@ public class Toolbar extends android.support.v7.widget.Toolbar {
     @Override
     public void setSubtitle(CharSequence subtitle) {
         if (!TextUtils.isEmpty(subtitle)) {
-            if (mMiddleTitleText == null) {
+            if (mTitleText == null) {
                 Context context = this.getContext();
                 mTitleTextView = new AppCompatTextView(context);
                 mTitleTextView.setSingleLine();
                 mTitleTextView.setEllipsize(TextUtils.TruncateAt.END);
-                mTitleTextView.setTextAppearance(context, R.style.Toolbar_titleTextAppearance);
+                mTitleTextView.setTextAppearance(context, R.style.Toolbar_TitleTextAppearance);
+                if (mTitleTextColor != 0) {
+                    mTitleTextView.setTextColor(mTitleTextColor);
+                }
                 Toolbar.LayoutParams params = new Toolbar.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 params.gravity = Gravity.CENTER;
                 addView(mTitleTextView, params);
@@ -62,7 +66,15 @@ public class Toolbar extends android.support.v7.widget.Toolbar {
         if (this.mTitleTextView != null) {
             this.mTitleTextView.setText(subtitle);
         }
-        mMiddleTitleText = subtitle;
+        mTitleText = subtitle;
+    }
+
+    @Override
+    public void setSubtitleTextColor(int color) {
+        mTitleTextColor = color;
+        if (mTitleTextView != null) {
+            mTitleTextView.setTextColor(color);
+        }
     }
 
     public void showPopupMenu(String[] menus) {

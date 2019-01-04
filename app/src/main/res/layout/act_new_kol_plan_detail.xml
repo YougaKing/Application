@@ -15,16 +15,16 @@
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsingToolbarLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="400dp"
             android:fitsSystemWindows="true"
             app:contentScrim="@color/cn_white_base_color"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:title=""
             app:titleEnabled="false">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="400dp"
+                android:background="@color/colorPrimary"
                 android:fitsSystemWindows="true"
                 android:orientation="vertical"
                 android:tag="overScroll"
@@ -33,15 +33,14 @@
                 <ImageView
                     android:id="@+id/siv_picture"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fitsSystemWindows="true"
+                    android:layout_height="300dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/bg_person_zone_default"
+                    android:src="@drawable/maxresdefault"
                     tools:ignore="ContentDescription" />
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:gravity="center"
                     android:maxLines="3"
                     android:text="@string/large_text"
@@ -49,13 +48,16 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher" />
+                    android:layout_height="50dp"
+                    android:src="@mipmap/ic_launcher"
+                    tools:ignore="ContentDescription" />
+
             </LinearLayout>
 
             <youga.com.application.Toolbar
                 android:id="@+id/toolbar"
                 style="@style/ToolbarStyle"
+                android:fitsSystemWindows="false"
                 app:layout_collapseMode="pin"
                 app:subtitle="哈哈" />
 
@@ -63,7 +65,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:background="@color/colorAccent"
             android:gravity="center"
             android:maxLines="5"

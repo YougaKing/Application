@@ -11,6 +11,10 @@
         <item name="actionBarSize">48dp</item>
     </style>
 
+    <style name="AppTheme.WindowTranslucentStatus">
+
+    </style>
+
     <!-- ToolBar样式.-->
     <style name="AppTheme.Toolbar" parent="Theme.AppCompat.Light.DarkActionBar">
         <!--menu字体颜色-->
@@ -43,7 +47,7 @@
     </style>
 
     <!-- Toolbar 标题样式 -->
-    <style name="Toolbar.titleTextAppearance" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
+    <style name="Toolbar.TitleTextAppearance" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">@dimen/dp_16</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/cn_textview_theme_color</item>
