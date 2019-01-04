@@ -8,6 +8,7 @@
     <color name="textColor">#333333</color>
     <color name="cn_white_base_color">#FFFFFF</color>
     <color name="cn_textview_theme_color">#333333</color>
+    <color name="transparent">#00000000</color>
 
 
 </resources>

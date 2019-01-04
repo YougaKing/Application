@@ -1,13 +1,13 @@
 package youga.com.application;
 
 import android.os.Bundle;
-import android.widget.TextView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 public class BasicActivity extends AppCompatActivity {
 
@@ -16,12 +16,14 @@ public class BasicActivity extends AppCompatActivity {
         System.loadLibrary("native-lib");
     }
 
+    private Toolbar mToolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basic);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +54,12 @@ public class BasicActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.menu_more) {
+            String[] strings = new String[]{
+                    "删除计划课程",
+                    "退出计划",
+            };
+            mToolbar.showPopupMenu(strings);
             return true;
         }
 

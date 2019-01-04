@@ -64,4 +64,12 @@ public class Toolbar extends android.support.v7.widget.Toolbar {
         }
         mMiddleTitleText = subtitle;
     }
+
+    public void showPopupMenu(String[] menus) {
+        if (menus == null) {
+            return;
+        }
+        PopupMenuWindow popupWindow = new PopupMenuWindow(getContext(), menus);
+        popupWindow.show(this, getHeight() - 20);
+    }
 }
