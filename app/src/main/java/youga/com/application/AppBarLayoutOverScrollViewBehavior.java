@@ -15,7 +15,7 @@ import android.view.View;
  */
 public class AppBarLayoutOverScrollViewBehavior extends AppBarLayout.Behavior {
 
-    private static final String TAG = "AppBarLayoutOverScrollViewBehavior";
+    private static final String TAG = "overScroll";
 
     private static final float TARGET_HEIGHT = 500;
     private View mTargetView;
@@ -26,7 +26,8 @@ public class AppBarLayoutOverScrollViewBehavior extends AppBarLayout.Behavior {
     private int mLastBottom;
     private boolean isAnimate;
 
-    public AppBarLayoutOverScrollViewBehavior() {
+    public AppBarLayoutOverScrollViewBehavior(Context context) {
+        this(context, null);
     }
 
     public AppBarLayoutOverScrollViewBehavior(Context context, AttributeSet attrs) {
@@ -47,17 +48,17 @@ public class AppBarLayoutOverScrollViewBehavior extends AppBarLayout.Behavior {
     }
 
     @Override
-    public boolean onStartNestedScroll(CoordinatorLayout parent, AppBarLayout child, View directTargetChild, View target, int nestedScrollAxes) {
+    public boolean onStartNestedScroll(CoordinatorLayout parent, AppBarLayout child, View directTargetChild, View target, int nestedScrollAxes, int type) {
         isAnimate = true;
-        return super.onStartNestedScroll(parent, child, directTargetChild, target, nestedScrollAxes);
+        return super.onStartNestedScroll(parent, child, directTargetChild, target, nestedScrollAxes, type);
     }
 
     @Override
-    public void onNestedPreScroll(CoordinatorLayout coordinatorLayout, AppBarLayout child, View target, int dx, int dy, int[] consumed) {
+    public void onNestedPreScroll(CoordinatorLayout coordinatorLayout, AppBarLayout child, View target, int dx, int dy, int[] consumed, int type) {
         if (mTargetView != null && ((dy < 0 && child.getBottom() >= mParentHeight) || (dy > 0 && child.getBottom() > mParentHeight))) {
             scale(child, target, dy);
         } else {
-            super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed);
+            super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed, type);
         }
     }
 
@@ -70,9 +71,9 @@ public class AppBarLayoutOverScrollViewBehavior extends AppBarLayout.Behavior {
     }
 
     @Override
-    public void onStopNestedScroll(CoordinatorLayout coordinatorLayout, AppBarLayout abl, View target) {
+    public void onStopNestedScroll(CoordinatorLayout coordinatorLayout, AppBarLayout abl, View target, int type) {
         recovery(abl);
-        super.onStopNestedScroll(coordinatorLayout, abl, target);
+        super.onStopNestedScroll(coordinatorLayout, abl, target, type);
     }
 
     private void initial(AppBarLayout abl) {
@@ -97,14 +98,11 @@ public class AppBarLayoutOverScrollViewBehavior extends AppBarLayout.Behavior {
             mTotalDy = 0;
             if (isAnimate) {
                 ValueAnimator anim = ValueAnimator.ofFloat(mLastScale, 1f).setDuration(200);
-                anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                    @Override
-                    public void onAnimationUpdate(ValueAnimator animation) {
-                        float value = (float) animation.getAnimatedValue();
-                        ViewCompat.setScaleX(mTargetView, value);
-                        ViewCompat.setScaleY(mTargetView, value);
-                        abl.setBottom((int) (mLastBottom - (mLastBottom - mParentHeight) * animation.getAnimatedFraction()));
-                    }
+                anim.addUpdateListener(animation -> {
+                    float value = (float) animation.getAnimatedValue();
+                    ViewCompat.setScaleX(mTargetView, value);
+                    ViewCompat.setScaleY(mTargetView, value);
+                    abl.setBottom((int) (mLastBottom - (mLastBottom - mParentHeight) * animation.getAnimatedFraction()));
                 });
                 anim.start();
             } else {

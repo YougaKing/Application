@@ -17,28 +17,28 @@
             style="@style/ToolbarStyle"
             app:title="呵呵" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_10"
-            android:background="@color/colorAccent" />
+        <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/dp_10"-->
+        <!--android:background="@color/colorAccent" />-->
 
-        <youga.com.application.Toolbar
-            style="@style/ToolbarStyle"
-            app:navigationIcon="@null"
-            >
+        <!--<youga.com.application.Toolbar-->
+        <!--style="@style/ToolbarStyle"-->
+        <!--app:navigationIcon="@null"-->
+        <!--&gt;-->
 
-            <include layout="@layout/toolbar" />
+        <!--<include layout="@layout/toolbar" />-->
 
-        </youga.com.application.Toolbar>
+        <!--</youga.com.application.Toolbar>-->
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_10"
-            android:background="@color/colorAccent" />
+        <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/dp_10"-->
+        <!--android:background="@color/colorAccent" />-->
 
-        <youga.com.application.Toolbar
-            style="@style/ToolbarStyle"
-            app:subtitle="哈哈" />
+        <!--<youga.com.application.Toolbar-->
+        <!--style="@style/ToolbarStyle"-->
+        <!--app:subtitle="哈哈" />-->
 
     </android.support.design.widget.AppBarLayout>
 

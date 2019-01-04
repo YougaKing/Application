@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
+    <color name="yoga_base_color">#8CA5FF</color>
 
     <color name="textColor">#333333</color>
     <color name="cn_white_base_color">#FFFFFF</color>

@@ -1,5 +1,6 @@
 package youga.com.application;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -40,6 +41,18 @@ public class BasicActivity extends AppCompatActivity {
         // Example of a call to a native method
         TextView tv = (TextView) findViewById(R.id.sample_text);
         tv.setText(stringFromJNI());
+
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotoNewKolPlanDetail();
+            }
+        });
+    }
+
+    private void gotoNewKolPlanDetail() {
+        Intent intent = new Intent(this, NewKolPlanDetailActivity.class);
+        startActivity(intent);
     }
 
     @Override
