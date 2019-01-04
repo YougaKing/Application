@@ -10,8 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".BasicActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".BasicActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,8 +19,7 @@
         </activity>
         <activity
             android:name=".ScrollingActivity"
-            android:label="@string/title_activity_scrolling"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:label="@string/title_activity_scrolling"></activity>
     </application>
 
 </manifest>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimary">#33574B</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
@@ -10,5 +10,7 @@
     <color name="cn_textview_theme_color">#333333</color>
     <color name="transparent">#00000000</color>
 
-
+    <color name="cn_textview_normal_color">#666666</color>
+    <!-- 辅色 line 色 -->
+    <color name="cn_yoga_base_line_color">#F0F0F0</color>
 </resources>

@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+
 import youga.com.application.Toolbar.OnPopupMenuItemClickListener;
 
 import static android.widget.ListPopupWindow.MATCH_PARENT;
@@ -30,30 +31,23 @@ public class PopupMenuWindow extends PopupWindow {
     private OnPopupMenuItemClickListener mMenuItemClickListener;
 
     public PopupMenuWindow(Context context, String[] menus, OnPopupMenuItemClickListener menuItemClickListener) {
+        super(context);
 
         mMenuItemClickListener = menuItemClickListener;
         setWidth(MATCH_PARENT);
         setHeight(MATCH_PARENT);
-        setOutsideTouchable(true);
         setBackgroundDrawable(new ColorDrawable(context.getResources().getColor(R.color.transparent)));
-
 
         View view = LayoutInflater.from(context).inflate(R.layout.window_popup_menu, null);
         setContentView(view);
 
         mSpaceView = view.findViewById(R.id.spaceView);
         mRecyclerView = view.findViewById(R.id.recyclerView);
-        mRecyclerView.setBackgroundResource(R.drawable.shape_popup_menu_bg);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(context, LinearLayout.VERTICAL));
         mRecyclerView.setAdapter(new InnerAdapter(menus));
 
-        mSpaceView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
+        mSpaceView.setOnClickListener(v -> dismiss());
     }
 
     public void show(View parent, int yOffset) {
@@ -96,14 +90,11 @@ public class PopupMenuWindow extends PopupWindow {
 
             public void bindPosition(final int position) {
                 mTextView.setText(mStrings[position]);
-                itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (mMenuItemClickListener != null) {
-                            mMenuItemClickListener.onItemClick(mStrings[position], position);
-                        }
-                        dismiss();
+                itemView.setOnClickListener(v -> {
+                    if (mMenuItemClickListener != null) {
+                        mMenuItemClickListener.onItemClick(mStrings[position], position);
                     }
+                    dismiss();
                 });
             }
         }

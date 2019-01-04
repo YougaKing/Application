@@ -73,8 +73,9 @@ public class Toolbar extends android.support.v7.widget.Toolbar {
         if (menus == null) {
             return;
         }
+        //getContext().getApplicationContext() 非常重要,getContext() Theme的背景色会影响PopupMenuWindow的背景色 所以用getContext().getApplicationContext()
         PopupMenuWindow popupWindow = new PopupMenuWindow(getContext(), menus, menuItemClickListener);
-        popupWindow.show(this, getHeight() - 20);
+        popupWindow.show(this, getHeight());
     }
 
     public interface OnPopupMenuItemClickListener {
