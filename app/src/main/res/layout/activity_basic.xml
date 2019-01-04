@@ -15,7 +15,6 @@
         <youga.com.application.Toolbar
             android:id="@+id/toolbar"
             style="@style/ToolbarStyle"
-            app:navigationIcon="@drawable/icon_menu_back_black"
             app:title="呵呵" />
 
         <View
@@ -23,7 +22,10 @@
             android:layout_height="@dimen/dp_10"
             android:background="@color/colorAccent" />
 
-        <youga.com.application.Toolbar style="@style/ToolbarStyle">
+        <youga.com.application.Toolbar
+            style="@style/ToolbarStyle"
+            app:navigationIcon="@null"
+            >
 
             <include layout="@layout/toolbar" />
 
@@ -36,7 +38,6 @@
 
         <youga.com.application.Toolbar
             style="@style/ToolbarStyle"
-            app:navigationIcon="@drawable/icon_menu_back_black"
             app:subtitle="哈哈" />
 
     </android.support.design.widget.AppBarLayout>
