@@ -2,11 +2,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="youga.com.application.BasicActivity">
+
     <item
-        android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title=""
+        app:actionLayout="@layout/action_layout"
+        app:showAsAction="always" />
+    <item
         android:icon="@drawable/icon_menu_share_black"
+        android:orderInCategory="100"
+        android:title=""
         app:showAsAction="always" />
     <item
         android:icon="@drawable/icon_menu_back_black"
