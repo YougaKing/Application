@@ -28,8 +28,6 @@
         <item name="android:listPreferredItemHeightLarge">@dimen/dp_40</item>
         <!-- 分隔线 -->
         <item name="android:dropDownListViewStyle">@style/DropDownListViewStyle</item>
-        <!-- 通过改变colorPrimary 的颜色,toolbar的背景色就是colorPrimary颜色 -->
-        <item name="colorPrimary">@color/cn_white_base_color</item>
     </style>
 
     <!-- ToolBar 弹出menu样式.-->
@@ -102,7 +100,10 @@
         <item name="navigationIcon">@drawable/icon_menu_back_black</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <!-- 通过改变colorPrimary 的颜色,toolbar的背景色就是colorPrimary颜色 -->
+        <item name="colorPrimary">@color/cn_white_base_color</item>
+    </style>
 
     <style name="AppBarLayoutStyle">
         <item name="android:layout_width">match_parent</item>
