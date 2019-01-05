@@ -43,53 +43,7 @@ public class NewKolPlanDetailActivity extends AppCompatActivity {
             actionBar.setTitle("");
         }
 
-        mAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-
-            private int alphaColor(int color, float alpha) {
-                int a = Math.min(255, Math.max(0, (int) (alpha * 255))) << 24;
-                int rgb = 0x00ffffff & color;
-                return a + rgb;
-            }
-
-            private Drawable tintDrawable(Drawable drawable, ColorStateList colors) {
-                final Drawable wrappedDrawable = DrawableCompat.wrap(drawable);
-                DrawableCompat.setTintList(wrappedDrawable, colors);
-                return wrappedDrawable;
-            }
-
-            private void alphaMenuIcon(int color) {
-                for (int i = 0; i < mToolbar.getMenu().size(); i++) {
-                    MenuItem menu = mToolbar.getMenu().getItem(i);
-                    menu.setIcon(tintDrawable(menu.getIcon(), ColorStateList.valueOf(color)));
-                }
-            }
-
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                int max = appBarLayout.getTotalScrollRange();
-                int scrimHeight = collapsingToolbarLayout.getScrimVisibleHeightTrigger();
-                int offset = Math.abs(verticalOffset);
-                if (max - offset <= scrimHeight) {
-                    //透明渐变黑色
-                    float alpha = (scrimHeight - (max - offset)) * 1.0F / scrimHeight;
-                    int color = alphaColor(Color.BLACK, alpha < 1F ? ((alpha = alpha - 0.3F) < 0F ? 0F : alpha) : alpha);
-                    mToolbar.setNavigationIcon(tintDrawable(mToolbar.getNavigationIcon(), ColorStateList.valueOf(color)));
-                    alphaMenuIcon(color);
-
-                    int textColor = alphaColor(getResources().getColor(R.color.cn_textview_theme_color), alpha);
-                    mToolbar.setSubtitleTextColor(textColor);
-                } else {
-                    //白色渐变透明
-                    int offsetMax = max - scrimHeight;
-                    int color = alphaColor(Color.WHITE, (offsetMax - offset) * 1.0F / offsetMax);
-                    mToolbar.setNavigationIcon(tintDrawable(mToolbar.getNavigationIcon(), ColorStateList.valueOf(color)));
-                    alphaMenuIcon(color);
-
-                    mToolbar.setSubtitleTextColor(Color.TRANSPARENT);
-                }
-
-            }
-        });
+        mAppBarLayout.addOnOffsetChangedListener(new AlphaOnOffsetChangedListener(mToolbar, collapsingToolbarLayout));
     }
 
     @Override
