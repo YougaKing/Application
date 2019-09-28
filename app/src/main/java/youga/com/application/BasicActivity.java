@@ -40,12 +40,34 @@ public class BasicActivity extends AppCompatActivity {
 
         // Example of a call to a native method
         TextView tv = (TextView) findViewById(R.id.sample_text);
+        TextView tv1 = (TextView) findViewById(R.id.sample_text_1);
+        TextView tv2 = (TextView) findViewById(R.id.sample_text_2);
+        FloatRegisterView floatRegisterView = findViewById(R.id.floatRegisterView);
         tv.setText(stringFromJNI());
 
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 gotoNewKolPlanDetail();
+            }
+        });
+        tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), tv.getText().toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        tv1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), tv1.getText().toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        tv2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), tv1.getText().toString(), Toast.LENGTH_SHORT).show();
             }
         });
     }
