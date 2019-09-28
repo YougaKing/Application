@@ -11,9 +11,7 @@ import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.view.SoundEffectConstants;
 import android.view.View;
-import android.view.accessibility.AccessibilityEvent;
 
 /**
  * @author: YougaKingWu@gmail.com
@@ -45,8 +43,6 @@ public class FloatRegisterView extends View {
     public FloatRegisterView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC_OUT);
-
-        setRegion(20, 400, 600, 10);
     }
 
     @Override
