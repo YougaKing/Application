@@ -19,9 +19,9 @@
         android:id="@+id/sample_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:stateListAnimator="@null"
         android:text="Hello World World!"
         android:textSize="20sp"
-        android:stateListAnimator="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -31,11 +31,11 @@
         android:id="@+id/sample_text_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World World!"
-        android:textSize="20sp"
         android:layout_marginTop="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Hello World World!"
         android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -56,5 +56,19 @@
         android:id="@+id/floatRegisterView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/tv_chronometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:background="@color/colorAccent"
+        android:layout_marginBottom="30dp"
+        android:text="计时器开始"
+        android:textColor="@color/cn_white_base_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
 
 </android.support.constraint.ConstraintLayout>

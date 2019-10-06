@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Locale;
+
 import youga.com.application.Toolbar.OnPopupMenuItemClickListener;
 
 public class BasicActivity extends AppCompatActivity {
@@ -21,6 +23,7 @@ public class BasicActivity extends AppCompatActivity {
     }
 
     private Toolbar mToolbar;
+    private Chronometer mChronometer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,7 @@ public class BasicActivity extends AppCompatActivity {
         });
 
         // Example of a call to a native method
+        TextView tvChronometer = (TextView) findViewById(R.id.tv_chronometer);
         TextView tv = (TextView) findViewById(R.id.sample_text);
         TextView tv1 = (TextView) findViewById(R.id.sample_text_1);
         TextView tv2 = (TextView) findViewById(R.id.sample_text_2);
@@ -68,6 +72,21 @@ public class BasicActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), tv1.getText().toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        mChronometer = new Chronometer();
+        mChronometer.setOnChronometerTickListener(duration -> {
+            runOnUiThread(() -> {
+                String text = mChronometer.isRunning() ? "开始:" : "暂停:";
+                tvChronometer.setText(String.format(Locale.CHINA, "%s%d", text, duration));
+            });
+        });
+        tvChronometer.setOnClickListener(v -> {
+            if (mChronometer.isRunning()) {
+                mChronometer.stop();
+            } else {
+                mChronometer.start();
             }
         });
     }
